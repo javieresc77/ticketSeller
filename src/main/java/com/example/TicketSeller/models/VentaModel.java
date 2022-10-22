@@ -13,15 +13,15 @@ public class VentaModel {
 	@Column(name="id", unique = true, nullable = false)
 	private Long id;
 
-	@Column(name="subtotal")
-	private int subtotal;
+	//@Column(name="subtotal")
+	//private int subtotal;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_usuario")
+	@JoinColumn(name = "usuario")
 	private UsuarioModel usuario;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_entrada")
+	@JoinColumn(name = "entrada")
 	private EntradaModel entrada;
 	
 	//@OneToMany(mappedBy="venta")
@@ -56,12 +56,11 @@ public class VentaModel {
 	}
 
 
-	public int getSubtotal() {
-		return subtotal;
-	}
-
-	public void setSubtotal(int subtotal) {
-		this.subtotal = subtotal;
-	}
+	//public int getSubtotal() {
+	//	return subtotal;
+	//}
+	//public void setSubtotal(int subtotal) {
+	//	this.subtotal = subtotal;
+	//}
 	
 }

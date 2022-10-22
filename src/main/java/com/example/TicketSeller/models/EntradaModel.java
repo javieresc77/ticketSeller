@@ -11,11 +11,8 @@ public class EntradaModel {
 	@Column(name="id", unique = true, nullable = false)
 	private Long id;
 	
-	@OneToOne(mappedBy = "entrada")
+	@OneToOne(cascade = CascadeType.ALL)
 	private EventoModel evento;
-
-	@Column(name="rut")
-	private String rut;
 	
 	@Column(name="precio")
 	private int precio;
@@ -52,23 +49,16 @@ public class EntradaModel {
 		this.evento = evento;
 	}
 
-	public String getRut() {
-		return rut;
-	}
-	public void setRut(String rutInvitado) {
-		this.rut = rutInvitado;
-	}
 	public int getPrecio() {
 		return precio;
 	}
-
 	public void setPrecio(int precio) {
 		this.precio = precio;
 	}
 
-	@Override
-	public String toString() {
-		return "Entrada [id=" + id + ", evento=" + ", rutInvitado="
-				+ rut + "]";
-	}
+	//@Override
+	//public String toString() {
+		//return "Entrada [id=" + id + ", evento=" + ", rutInvitado="
+				// + "]";
+	//}
 }

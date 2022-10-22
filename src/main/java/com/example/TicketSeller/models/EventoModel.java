@@ -12,12 +12,23 @@ public class EventoModel {
 	@Column(name="id", unique = true, nullable = false)
 	private Long id;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_entrada", referencedColumnName = "id")
+	@OneToOne(mappedBy = "evento")
+	@JoinColumn(name = "entrada", referencedColumnName = "id")
 	private EntradaModel entrada;
 
 	@Column(name="nombre")
 	private String nombre;
+
+	@Column(name="capacidad")
+	private int capacidad;
+
+	public int getCapacidad() {
+		return capacidad;
+	}
+
+	public void setCapacidad(int capacidad) {
+		this.capacidad = capacidad;
+	}
 
 	public String getNombre() {
 		return nombre;
