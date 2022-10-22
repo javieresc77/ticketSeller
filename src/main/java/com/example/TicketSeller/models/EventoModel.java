@@ -1,11 +1,7 @@
 package com.example.TicketSeller.models;
 
 import javax.persistence.*;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "evento")
@@ -16,14 +12,12 @@ public class EventoModel {
 	@Column(name="id", unique = true, nullable = false)
 	private Long id;
 
-	//@OneToOne(mappedBy = "evento")
-	private Long entrada;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_entrada", referencedColumnName = "id")
+	private EntradaModel entrada;
+
+	@Column(name="nombre")
 	private String nombre;
-	
-	//public EventoModel(Long idLocacion, String nombre) {
-	//	this.idLocacion = idLocacion;
-	//	this.nombre = nombre;
-	//}
 
 	public String getNombre() {
 		return nombre;
@@ -41,11 +35,11 @@ public class EventoModel {
 		this.id = id;
 	}
 	
-	public Long getEntrada() {
+	public EntradaModel getEntrada() {
 		return entrada;
 	}
 
-	public void setEntrada(Long entrada) {
+	public void setEntrada(EntradaModel entrada) {
 		this.entrada = entrada;
 	}
 

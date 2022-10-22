@@ -26,11 +26,6 @@ public class EntradaService {
         return entradaRepository.findById(id);
     }
 
-
-    //public ArrayList<EntradaModel>  obtenerPorPrioridad(Integer prioridad) {
-    //    return entradaRepository.findByPrioridad(prioridad);
-    //}
-
     public boolean eliminarEntrada(Long id) {
         try{
             entradaRepository.deleteById(id);
@@ -40,6 +35,4 @@ public class EntradaService {
         }
     }
 
-
-    
 }

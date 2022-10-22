@@ -26,11 +26,6 @@ public class EventoService {
         return eventoRepository.findById(id);
     }
 
-
-    //public ArrayList<EventoModel>  obtenerPorPrioridad(Integer prioridad) {
-    //    return eventoRepository.findByPrioridad(prioridad);
-    //}
-
     public boolean eliminarEvento(Long id) {
         try{
             eventoRepository.deleteById(id);
@@ -40,6 +35,4 @@ public class EventoService {
         }
     }
 
-
-    
 }

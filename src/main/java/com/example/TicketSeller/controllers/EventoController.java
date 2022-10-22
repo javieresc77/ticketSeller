@@ -31,11 +31,6 @@ public class EventoController {
         return this.eventoService.obtenerPorId(id);
     }
 
-    //@GetMapping("/query")
-    //public ArrayList<EventoModel> obtenerEventoPorPrioridad(@RequestParam("prioridad") Integer prioridad){
-    //    return this.eventoService.obtenerPorPrioridad(prioridad);
-    //}
-
     @DeleteMapping( path = "/{id}")
     public String eliminarPorId(@PathVariable("id") Long id){
         boolean ok = this.eventoService.eliminarEvento(id);

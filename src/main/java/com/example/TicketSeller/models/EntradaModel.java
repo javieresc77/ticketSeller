@@ -11,13 +11,32 @@ public class EntradaModel {
 	@Column(name="id", unique = true, nullable = false)
 	private Long id;
 	
-	//@OneToOne(cascade = CascadeType.ALL)
-	//@JoinColumn(name = "idEvento", referencedColumnName = "id")
-	private Long evento;
+	@OneToOne(mappedBy = "entrada")
+	private EventoModel evento;
+
+	@Column(name="rut")
+	private String rut;
 	
-	//private VentaModel venta;
-	private String rutInvitado;
+	@Column(name="precio")
 	private int precio;
+
+	@OneToOne(mappedBy = "entrada")	
+	private VentaModel venta;	
+
+	//@ManyToOne(fetch = FetchType.LAZY)
+	//@JoinColumn(name="venta", nullable=false)
+	//private VentaModel venta;
+	
+	//@OneToMany
+	//@JoinColumn(name="id_venta", nullable=false)
+	//private VentaModel venta;
+	
+	public VentaModel getVenta() {
+		return venta;
+	}
+	public void setVenta(VentaModel venta) {
+		this.venta = venta;
+	}
 
 	public Long getId() {
 		return id;
@@ -26,18 +45,18 @@ public class EntradaModel {
 		this.id = id;
 	}
 	
-	public Long getEvento() {
+	public EventoModel getEvento() {
 		return evento;
 	}
-	public void setEvento(Long evento) {
+	public void setEvento(EventoModel evento) {
 		this.evento = evento;
 	}
 
-	public String getRutInvitado() {
-		return rutInvitado;
+	public String getRut() {
+		return rut;
 	}
-	public void setRutInvitado(String rutInvitado) {
-		this.rutInvitado = rutInvitado;
+	public void setRut(String rutInvitado) {
+		this.rut = rutInvitado;
 	}
 	public int getPrecio() {
 		return precio;
@@ -50,6 +69,6 @@ public class EntradaModel {
 	@Override
 	public String toString() {
 		return "Entrada [id=" + id + ", evento=" + ", rutInvitado="
-				+ rutInvitado + "]";
+				+ rut + "]";
 	}
 }

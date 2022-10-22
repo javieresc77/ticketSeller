@@ -26,11 +26,6 @@ public class VentaService {
         return ventaRepository.findById(id);
     }
 
-
-    //public ArrayList<VentaModel>  obtenerPorPrioridad(Integer prioridad) {
-    //    return ventaRepository.findByPrioridad(prioridad);
-    //}
-
     public boolean eliminarVenta(Long id) {
         try{
             ventaRepository.deleteById(id);

@@ -1,6 +1,6 @@
 package com.example.TicketSeller.models;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -10,42 +10,51 @@ public class VentaModel {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(unique = true, nullable = false)
+	@Column(name="id", unique = true, nullable = false)
 	private Long id;
-	private String rutComprador;
-	
-  //@OneToOne(mappedBy = "venta", fetch = FetchType.LAZY, orphanRemoval = false)
-	//private List<EntradaModel> entradas;
+
+	@Column(name="subtotal")
 	private int subtotal;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_usuario")
+	private UsuarioModel usuario;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_entrada")
+	private EntradaModel entrada;
 	
-	//public VentaModel(String rutComprador, String[] idEntradas, int subtotal) {
-	//	this.rutComprador = rutComprador;
-	//	this.subtotal = subtotal;
+	//@OneToMany(mappedBy="venta")
+	//private Set<EntradaModel> entradas;
+
+	//@ManyToOne
+	//@JoinColumn(name="entradas", nullable=false)
+	//private Set<EntradaModel> entradas;
+
+	//public void setEntradas(Set<EntradaModel> entradas) {
+	//	this.entradas = entradas;
 	//}
-
-	public String getRutComprador() {
-		return rutComprador;
+	//public Set<EntradaModel> getEntradas() {
+	//	return entradas;
+	//}
+	
+	public UsuarioModel getUsuario() {
+		return usuario;
 	}
 
-	public void setRutComprador(String rutComprador) {
-		this.rutComprador = rutComprador;
-	}
-
-	public Long getIdCompra() {
-		return id;
+	public void setRutComprador(UsuarioModel rutComprador) {
+		this.usuario = rutComprador;
 	}
 
 	public void setIdCompra(Long idCompra) {
 		this.id = idCompra;
 	}
 
-	//public List<EntradaModel> getIdEntradas() {
-	//	return entradas;
-	//}
 
-	//public void setIdEntradas(List<EntradaModel> idEntradas) {
-	//	this.entradas = idEntradas;
-	//}
+	public Long getIdCompra() {
+		return id;
+	}
+
 
 	public int getSubtotal() {
 		return subtotal;

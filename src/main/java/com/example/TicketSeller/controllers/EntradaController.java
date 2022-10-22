@@ -31,11 +31,6 @@ public class EntradaController {
         return this.entradaService.obtenerPorId(id);
     }
 
-    //@GetMapping("/query")
-    //public ArrayList<EntradaModel> obtenerEntradaPorPrioridad(@RequestParam("prioridad") Integer prioridad){
-    //    return this.entradaService.obtenerPorPrioridad(prioridad);
-    //}
-
     @DeleteMapping( path = "/{id}")
     public String eliminarPorId(@PathVariable("id") Long id){
         boolean ok = this.entradaService.eliminarEntrada(id);

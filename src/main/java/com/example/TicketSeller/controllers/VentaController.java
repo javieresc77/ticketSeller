@@ -31,11 +31,6 @@ public class VentaController {
         return this.ventaService.obtenerPorId(id);
     }
 
-    //@GetMapping("/query")
-    //public ArrayList<VentaModel> obtenerVentaPorPrioridad(@RequestParam("prioridad") Integer prioridad){
-    //    return this.ventaService.obtenerPorPrioridad(prioridad);
-    //}
-
     @DeleteMapping( path = "/{id}")
     public String eliminarPorId(@PathVariable("id") Long id){
         boolean ok = this.ventaService.eliminarVenta(id);
