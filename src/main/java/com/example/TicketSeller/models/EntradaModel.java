@@ -10,33 +10,14 @@ public class EntradaModel {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id", unique = true, nullable = false)
 	private Long id;
-	
-	@OneToOne(mappedBy = "entrada")
-	private EventoModel evento;
 
-	@Column(name="rut")
-	private String rut;
+	@OneToOne(cascade = CascadeType.ALL)
+	private EventoModel evento;
 	
 	@Column(name="precio")
 	private int precio;
 
-	@OneToOne(mappedBy = "entrada")	
-	private VentaModel venta;	
-
-	//@ManyToOne(fetch = FetchType.LAZY)
-	//@JoinColumn(name="venta", nullable=false)
-	//private VentaModel venta;
-	
-	//@OneToMany
-	//@JoinColumn(name="id_venta", nullable=false)
-	//private VentaModel venta;
-	
-	public VentaModel getVenta() {
-		return venta;
-	}
-	public void setVenta(VentaModel venta) {
-		this.venta = venta;
-	}
+	public EntradaModel() {}
 
 	public Long getId() {
 		return id;
@@ -51,24 +32,18 @@ public class EntradaModel {
 	public void setEvento(EventoModel evento) {
 		this.evento = evento;
 	}
-
-	public String getRut() {
-		return rut;
-	}
-	public void setRut(String rutInvitado) {
-		this.rut = rutInvitado;
-	}
 	public int getPrecio() {
 		return precio;
 	}
-
 	public void setPrecio(int precio) {
 		this.precio = precio;
 	}
 
 	@Override
 	public String toString() {
-		return "Entrada [id=" + id + ", evento=" + ", rutInvitado="
-				+ rut + "]";
+		return "EntradaModel [" + (id != null ? "id=" + id + ", " : "")
+				+ (evento != null ? "evento=" + evento + ", " : "") + "precio=" + precio + "]";
 	}
+	
+
 }

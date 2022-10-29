@@ -18,6 +18,7 @@ public class UsuarioController {
 
     @GetMapping()
     public ArrayList<UsuarioModel> obtenerUsuarios(){
+    	System.out.println("obteniendo usuario");
         return usuarioService.obtenerUsuarios();
     }
 

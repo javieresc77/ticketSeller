@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 import com.example.TicketSeller.models.EntradaModel;
+import com.example.TicketSeller.models.EventoModel;
 import com.example.TicketSeller.services.EntradaService;
+import com.example.TicketSeller.services.EventoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +17,8 @@ import org.springframework.web.bind.annotation.*;
 public class EntradaController {
     @Autowired
     EntradaService entradaService;
+    @Autowired
+    EventoService eventoService;
 
     @GetMapping()
     public ArrayList<EntradaModel> obtenerEntradas(){
@@ -22,7 +26,7 @@ public class EntradaController {
     }
 
     @PostMapping()
-    public EntradaModel guardarEntrada(@RequestBody EntradaModel entrada){
+    public EntradaModel guardarEntrada(@RequestBody EntradaModel entrada){	
         return this.entradaService.guardarEntrada(entrada);
     }
 

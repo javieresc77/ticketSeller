@@ -19,6 +19,7 @@ public class EntradaService {
     }
 
     public EntradaModel guardarEntrada(EntradaModel entrada){
+        System.out.println(entrada);
         return entradaRepository.save(entrada);
     }
 
@@ -34,5 +35,9 @@ public class EntradaService {
             return false;
         }
     }
+
+	public EntradaModel obtenerEntradaPorId(Long id) {
+        return entradaRepository.findEntradaById(id);
+	}
 
 }
