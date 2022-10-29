@@ -17,20 +17,11 @@ public class UsuarioModel {
     @Column(name="apellidos", nullable = false)
     private String apellidos;
     
-    @OneToOne(mappedBy = "usuario")
-    private VentaModel venta;
-
-    public VentaModel getVenta() {
-        return venta;
-    }
-
-    public void setVenta(VentaModel venta) {
-        this.venta = venta;
-    }
-
     @Column(unique = true, nullable = false, name="rut")
     private String rut;
 
+    public UsuarioModel() {}
+    
     public Long getId() {
         return id;
     }
@@ -62,5 +53,11 @@ public class UsuarioModel {
     public void setRut(String rut) {
         this.rut = rut;
     }
-    
+
+	@Override
+	public String toString() {
+		return "UsuarioModel [" + (id != null ? "id=" + id + ", " : "")
+				+ (nombres != null ? "nombres=" + nombres + ", " : "")
+				+ (apellidos != null ? "apellidos=" + apellidos + ", " : "") + (rut != null ? "rut=" + rut : "") + "]";
+	}
 }

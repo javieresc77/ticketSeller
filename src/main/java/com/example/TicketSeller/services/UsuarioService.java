@@ -25,6 +25,10 @@ public class UsuarioService {
     public Optional<UsuarioModel> obtenerPorId(Long id){
         return usuarioRepository.findById(id);
     }
+    
+    public UsuarioModel obtenerUsuarioPorId(Long id){
+        return usuarioRepository.findUserById(id);
+    }
 
     public boolean eliminarUsuario(Long id) {
         try{
@@ -34,7 +38,4 @@ public class UsuarioService {
             return false;
         }
     }
-
-
-    
 }

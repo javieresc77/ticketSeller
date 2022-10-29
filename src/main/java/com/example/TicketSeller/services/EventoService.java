@@ -25,6 +25,10 @@ public class EventoService {
     public Optional<EventoModel> obtenerPorId(Long id){
         return eventoRepository.findById(id);
     }
+    
+    public EventoModel obtenerEventoPorId(Long id){
+        return eventoRepository.findEventoById(id);
+    }
 
     public boolean eliminarEvento(Long id) {
         try{

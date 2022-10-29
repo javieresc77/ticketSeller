@@ -13,9 +13,6 @@ public class VentaModel {
 	@Column(name="id", unique = true, nullable = false)
 	private Long id;
 
-	//@Column(name="subtotal")
-	//private int subtotal;
-
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "usuario")
 	private UsuarioModel usuario;
@@ -23,37 +20,63 @@ public class VentaModel {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "entrada")
 	private EntradaModel entrada;
+
+	@Column(name="ticket_id")
+	private Long ticketID;
 	
-	//@OneToMany(mappedBy="venta")
-	//private Set<EntradaModel> entradas;
+	@Column(name="user_id")
+	private Long userID;
 
-	//@ManyToOne
-	//@JoinColumn(name="entradas", nullable=false)
-	//private Set<EntradaModel> entradas;
+	public Long getTicketID() {
+		return ticketID;
+	}
 
-	//public void setEntradas(Set<EntradaModel> entradas) {
-	//	this.entradas = entradas;
-	//}
-	//public Set<EntradaModel> getEntradas() {
-	//	return entradas;
-	//}
+	public void setTicketID(Long ticketID) {
+		this.ticketID = ticketID;
+	}
+
+	public Long getUserID() {
+		return userID;
+	}
+
+	public void setUserID(Long userID) {
+		this.userID = userID;
+	}
+	
+	public EntradaModel getEntrada() {
+		return entrada;
+	}
+
+	public void setEntrada(EntradaModel entrada) {
+		this.entrada = entrada;
+	}
+
+	public void setUsuario(UsuarioModel usuario) {
+		this.usuario = usuario;
+	}
 	
 	public UsuarioModel getUsuario() {
 		return usuario;
 	}
 
-	public void setRutComprador(UsuarioModel rutComprador) {
-		this.usuario = rutComprador;
-	}
-
-	public void setIdCompra(Long idCompra) {
+	public void setId(Long idCompra) {
 		this.id = idCompra;
 	}
 
 
-	public Long getIdCompra() {
+	public Long getId() {
 		return id;
 	}
+
+	@Override
+	public String toString() {
+		return "VentaModel [" + (id != null ? "id=" + id + ", " : "")
+				+ (usuario != null ? "usuario=" + usuario + ", " : "")
+				+ (entrada != null ? "entrada=" + entrada + ", " : "")
+				+ (ticketID != null ? "ticketID=" + ticketID + ", " : "") + (userID != null ? "userID=" + userID : "")
+				+ "]";
+	}
+
 
 
 	//public int getSubtotal() {
